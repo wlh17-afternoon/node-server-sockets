@@ -3,7 +3,6 @@ const args = process.argv.slice(2);
 // console.log(args);
 const _ = require("lodash");
 
-// module.exports = {
  
     
     const data = {
@@ -22,4 +21,3 @@ const _ = require("lodash");
     
     process.stdin.resume();
   
-// };
