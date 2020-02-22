@@ -2,6 +2,7 @@ const io = require("socket.io-client");
 const args = process.argv.slice(2);
 const _ = require("lodash");
 const fs = require('fs');
+const {exec} = require('child_process')
 
  
     
@@ -12,7 +13,7 @@ const fs = require('fs');
     };
     const interval = () => {
       socket.emit("join new room", data);
-      fs.appendFile(`test2/${data.id}`, data.id + "\n", (err) => {
+      fs.appendFile(`test2/${data.id}.txt`, data.id + "\n", (err) => {
         if (err) throw err
         console.log('File Append Successful')
     })
@@ -24,4 +25,16 @@ const fs = require('fs');
     setInterval(interval, _.random(2000, 6000));
     
     process.stdin.resume();
-  
+    
+    // const number = _.range(12345, 12364);
+    
+    // number.map((el, i) => {
+    //   exec(`wc -l test2/${el}.txt`)
+    //   console.log(process.argv)
+      // console.log(execute)
+    //   fs.appendFile(`test2/clientreport.txt`, `${el} : ${execute}` + "\n",(err) => {
+    //     if (err) throw err
+    //     console.log('File Append Successful')
+    // } )
+    // })
+    
