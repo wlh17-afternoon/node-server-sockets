@@ -1,5 +1,4 @@
 const fs = require('fs');
-const {exec} = require('child_process')
 
 const clientCount = []
 const clients = (num, arr) => {
@@ -12,16 +11,7 @@ const clients = (num, arr) => {
         arr.push(Number(num))
     }
 }
-let payloads = 0
-// const payloadCalculator = (num, payload) => {
-//     const payloadArr = []
-//     clients(num, payloadArr)
-//     if(payload){
-//         console.log(payload)
-//         payloads ++
-//         console.log(payloads)
-//     }
-// }
+
 module.exports = {
     setSocketListeners: (socket, io) => {
         socket.on('join new room', data => {
@@ -33,9 +23,6 @@ module.exports = {
                 console.log('File Append Successful')
             })
             clients(id, clientCount)
-            // console.log(clientCount)
-            // console.log(clientCount.length)
-            payloadCalculator(id, message)
         })
         socket.on('disconnect', roomId => {
             socket.leave(roomId)
