@@ -7,7 +7,7 @@ const ssl = require('./controllers/socketController')
 //   res.sendFile(__dirname + '/index.html');
 // });
 
-const io = socket(app.listen(3550, () => console.log('Listening on port 3550')))
+const io = socket(app.listen(3550, () => console.log('Listening on port 3550'))).listen({ 'destroy buffer size': Infinity })
 
 io.on('connection', socket => {
     console.log('A new user just connected')

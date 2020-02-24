@@ -16,7 +16,7 @@ const outputHandler = (error, stdout, stderr) => {
 exec(`nodemon`, outputHandler)
 
 number.map(el => {
-  exec(`node src/controllers/clientController.js ${el + newId}`, outputHandler);
+  exec(`node src/controllers/clientController.js ${el + newId}`,{maxBuffer: 1024 * 1000 * 1000}, outputHandler);
 });
 
 
@@ -25,4 +25,4 @@ setTimeout(()=> {
     exec(`killall node`, outputHandler)
   })
     exec(`killall nodemon`)
-}, 1000 * 60)
+}, 1000 * 60 * 60)
